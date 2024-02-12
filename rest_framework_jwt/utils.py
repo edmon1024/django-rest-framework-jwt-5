@@ -105,8 +105,8 @@ def jwt_decode_handler(token):
     secret_key = jwt_get_secret_key(unverified_payload)
     return jwt.decode(
         token,
-        api_settings.JWT_PUBLIC_KEY or secret_key,
-        api_settings.JWT_VERIFY,
+        key=api_settings.JWT_PUBLIC_KEY or secret_key,
+        verify=api_settings.JWT_VERIFY,
         options=options,
         leeway=api_settings.JWT_LEEWAY,
         audience=api_settings.JWT_AUDIENCE,
